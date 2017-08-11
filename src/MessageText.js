@@ -34,26 +34,26 @@ export default class MessageText extends React.Component {
   }
 
   onPhonePress(phone) {
-    const options = [
-      'Text',
-      'Call',
-      'Cancel',
-    ];
-    const cancelButtonIndex = options.length - 1;
-    this.context.actionSheet().showActionSheetWithOptions({
-      options,
-      cancelButtonIndex,
-    },
-    (buttonIndex) => {
-      switch (buttonIndex) {
-        case 0:
-          Communications.phonecall(phone, true);
-          break;
-        case 1:
-          Communications.text(phone);
-          break;
-      }
-    });
+    // const options = [
+    //   'Text',
+    //   'Call',
+    //   'Cancel',
+    // ];
+    // const cancelButtonIndex = options.length - 1;
+    // this.context.actionSheet().showActionSheetWithOptions({
+    //   options,
+    //   cancelButtonIndex,
+    // },
+    // (buttonIndex) => {
+    //   switch (buttonIndex) {
+    //     case 0:
+    Communications.phonecall(phone, true);
+    //       break;
+    //     case 1:
+    //       Communications.text(phone);
+    //       break;
+    //   }
+    // });
   }
 
   onEmailPress(email) {
@@ -66,9 +66,9 @@ export default class MessageText extends React.Component {
         <ParsedText
           style={[styles[this.props.position].text, this.props.textStyle[this.props.position]]}
           parse={[
-            {type: 'url', style: StyleSheet.flatten([styles[this.props.position].link, this.props.linkStyle[this.props.position]]), onPress: this.onUrlPress},
-            {type: 'phone', style: StyleSheet.flatten([styles[this.props.position].link, this.props.linkStyle[this.props.position]]), onPress: this.onPhonePress},
-            {type: 'email', style: StyleSheet.flatten([styles[this.props.position].link, this.props.linkStyle[this.props.position]]), onPress: this.onEmailPress},
+            { type: 'url', style: StyleSheet.flatten([styles[this.props.position].link, this.props.linkStyle[this.props.position]]), onPress: this.onUrlPress },
+            { type: 'phone', style: StyleSheet.flatten([styles[this.props.position].link, this.props.linkStyle[this.props.position]]), onPress: this.onPhonePress },
+            { type: 'email', style: StyleSheet.flatten([styles[this.props.position].link, this.props.linkStyle[this.props.position]]), onPress: this.onEmailPress },
           ]}
         >
           {this.props.currentMessage.text}
